@@ -10,7 +10,7 @@ RSpec.describe Product, type: :model do
       expect(build(:product, name:nil)).to be_invalid
     end
     it "should be invalid if repeated" do
-      create(:product, name: "Caneta Azul")
+      create(:product, name: "Caneta azul")
       expect(build(:product, name:"Caneta azul")).to be_invalid
     end
   end
