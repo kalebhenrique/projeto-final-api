@@ -21,12 +21,12 @@ RSpec.describe Product, type: :model do
     end
   end
 
-  context "Validating price" do
+  context "Validating price_in_cents" do
     it "should be invalid if nil" do
-      expect(build(:product, price:nil)).to be_invalid
+      expect(build(:product, price_in_cents:nil)).to be_invalid
     end
     it "should be invalid if negative" do
-      expect(build(:product, price:-1)).to be_invalid
+      expect(build(:product, price_in_cents:-1)).to be_invalid
     end
   end
 

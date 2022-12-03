@@ -6,7 +6,7 @@ FactoryBot.define do
   factory :product do
     name { generate(:product_names) }
     description { "MyString" }
-    price { 1 }
+    price_in_cents { 1 }
     inventory { 1 }
     brand { association :brand }
     category { association :category }
