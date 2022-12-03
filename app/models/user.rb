@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+    has_many :carts, dependent: :destroy
     validates :credit, :name, presence: :true
     validates :name, length: { minimum: 3, maximum: 30 }
     validates :is_admin, inclusion: [true, false], exclusion: [nil]
