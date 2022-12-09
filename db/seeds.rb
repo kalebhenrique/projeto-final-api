@@ -4,6 +4,35 @@ User.create!(name:"Trainee",
     email:"trainee@gmail", 
     password:"123456")
 
-Category.create!(name:"Materiais")
+Category.create!(name:"Material Escolar")
 Category.create!(name:"Cadernos")
 Category.create!(name:"Mochilas")
+
+Brand.create!(name:"Bic")
+Brand.create!(name:"Faber Castell")
+Brand.create!(name:"Tilibra")
+
+Product.create!(
+    name:"Caneta Azul",
+    price_in_cents: 100,
+    description:"Caneta Azul Esferógrafica Bic",
+    inventory: 50,
+    category_id: 1,
+    brand_id: 1
+)
+Product.create!(
+    name:"Caneta Vermelha",
+    price_in_cents: 100,
+    description:"Caneta Vermelha Esferógrafica Bic",
+    inventory: 50,
+    category_id: 1,
+    brand_id: 1
+)
+Product.create!(
+    name:"Caderno 10 Matérias",
+    price_in_cents: 2000,
+    description:"Caderno 10 Matérias Tilibra",
+    inventory: 50,
+    category_id: 2,
+    brand_id: 3
+)
