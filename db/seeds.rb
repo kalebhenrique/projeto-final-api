@@ -1,8 +1,16 @@
-User.create!(name:"Trainee", 
+User.create!(name:"Admin", 
     is_admin: true, 
     credit: 100, 
     email:"trainee@gmail", 
-    password:"123456")
+    password:"123456",
+    phone:"123456789")
+
+User.create!(name:"User",
+    is_admin: false,
+    credit: 100,
+    email:"user@gmail",
+    password:"123456",
+    phone:"987654321")
 
 Category.create!(name:"Material Escolar")
 Category.create!(name:"Cadernos")
@@ -36,3 +44,5 @@ Product.create!(
     category_id: 2,
     brand_id: 3
 )
+
+Cart.create!(user_id: 2, product_id: 1)
