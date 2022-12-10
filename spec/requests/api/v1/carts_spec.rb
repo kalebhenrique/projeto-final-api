@@ -47,7 +47,7 @@ RSpec.describe "Api::V1::Carts", type: :request do
         phone: "987654321")
     end
     cart_params = {
-      user_id: 1,
+      user_id: 2,
       product_id: 1
     }
     context 'params are ok' do
