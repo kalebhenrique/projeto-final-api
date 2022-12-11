@@ -48,7 +48,8 @@ class Api::V1::ProductsController < ApplicationController
             :inventory, 
             :price_in_cents,
             :category_id, 
-            :brand_id
+            :brand_id,
+            images: []
         )
     end
 end
