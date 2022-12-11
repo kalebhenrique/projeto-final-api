@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       scope 'users' do
+        get 'index', to: 'users#index'
+        get 'show/:id', to: 'users#show'
+        post 'create', to: 'users#create'
+        patch 'update/:id', to: 'users#update'
+        patch 'update_password/:id', to: 'users#update_password'
+        delete 'delete/:id', to: 'users#delete'
         get 'login', to: 'users#login'
         get 'logout', to: 'users#logout'
       end
