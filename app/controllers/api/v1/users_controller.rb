@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    acts_as_token_authentication_handler_for User, only: [:logout, :show, :update, :delete]
+    acts_as_token_authentication_handler_for User, only: [:logout, :show, :update, :update_password, :delete]
     
     before_action :authentication_admin, only: [:index]
     
