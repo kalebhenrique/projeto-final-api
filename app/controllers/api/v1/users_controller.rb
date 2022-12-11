@@ -77,7 +77,9 @@ class Api::V1::UsersController < ApplicationController
             :password, 
             :password_confirmation, 
             :is_admin, 
-            :credit)
+            :credit,
+            :profile_picture
+        )
     end
 
     def user_update_params

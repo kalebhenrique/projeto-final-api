@@ -29,11 +29,10 @@ RSpec.describe "Api::V1::Users", type: :request do
           'id' => 1,
           'name' => "user",
           'email' => "user@gmail",
-          'is_admin' => false,
           'credit' => 0,
           'phone' => "123456789",
-          'created_at' => eval(User.find(1).created_at.to_json),
-          'updated_at' => eval(User.find(1).updated_at.to_json)
+          'profile_picture_url' => nil,
+          'is_admin' => false
         }
         ])
       end

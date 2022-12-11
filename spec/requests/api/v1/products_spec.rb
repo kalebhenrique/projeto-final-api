@@ -14,7 +14,7 @@ RSpec.describe "Api::V1::Products", type: :request do
         description: "Caneta Azul Esferógrafica Bic",
         inventory: 50, 
         category_id: 1, 
-        brand_id: 1,
+        brand_id: 1
       )
       create(:product, 
         id:2, 
@@ -23,7 +23,8 @@ RSpec.describe "Api::V1::Products", type: :request do
         description: "Caneta Vermelha Esferógrafica Bic",
         inventory: 50,
         category_id: 1, 
-        brand_id: 1)
+        brand_id: 1
+      )
     end
     context 'when index' do
       before do
@@ -39,24 +40,22 @@ RSpec.describe "Api::V1::Products", type: :request do
         expect(JSON.parse(response.body)).to eq([{
           'id' => 1,
           'name' => "Caneta Azul",
-          'price_in_cents' => 100,
           'description' => "Caneta Azul Esferógrafica Bic",
+          'price_in_cents' => 100, 
           'inventory' => 50,
-          'category_id' => 1,
-          'brand_id' => 1,
-          'created_at' => eval(Product.find(1).created_at.to_json),
-          'updated_at' => eval(Product.find(1).updated_at.to_json)
+          'images_url' => [],
+          'brand' => {"id"=>1, "name"=>"Bic"},
+          'category' => {"id"=>1, "name"=>"Material Escolar"}
         },
         {
           'id' => 2,
           'name' => "Caneta Vermelha",
-          'price_in_cents' => 100,
           'description' => "Caneta Vermelha Esferógrafica Bic",
+          'price_in_cents' => 100,
           'inventory' => 50,
-          'category_id' => 1,
-          'brand_id' => 1,
-          'created_at' => eval(Product.find(2).created_at.to_json),
-          'updated_at' => eval(Product.find(2).updated_at.to_json)
+          'images_url' => [],
+          'brand' => {"id"=>1, "name"=>"Bic"},
+          'category' => {"id"=>1, "name"=>"Material Escolar"}
         }
         ])
       end
