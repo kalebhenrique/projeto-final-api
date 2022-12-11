@@ -46,3 +46,5 @@ Product.create!(
 )
 
 Cart.create!(user_id: 2, product_id: 1)
+
+User.find_by(name: 'Admin').profile_picture.attach(io: File.open('./public/admin.png'), filename: 'admin.png')

@@ -81,7 +81,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def user_update_params
-        params.require(:user).permit(:name, :phone)
+        params.require(:user).permit(:name, :phone, :profile_picture)
     end
 
     def user_update_password_params
