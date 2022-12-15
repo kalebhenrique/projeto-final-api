@@ -77,14 +77,6 @@ Product.create!(
     brand_id: 2
 )
 Product.create!(
-    name:"Pincel marcador",
-    price_in_cents: 300,
-    description:"Pincel marcador vermelho Faber Castell",
-    inventory: 50,
-    category_id: 1,
-    brand_id: 2
-)
-Product.create!(
     name:"Caderno 10 matérias",
     price_in_cents: 2000,
     description:"Caderno 10 matérias Tilibra",
@@ -179,6 +171,14 @@ Product.create!(
     inventory: 50,
     category_id: 3,
     brand_id: 3
+)
+Product.create!(
+    name:"Mochila lateral",
+    price_in_cents: 2000,
+    description:"Mochila lateral Faber Castell",
+    inventory: 50,
+    category_id: 3,
+    brand_id: 2
 )
 
 Cart.create!(user_id: 2, product_id: 1)
