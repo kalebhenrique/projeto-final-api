@@ -16,7 +16,10 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
     context 'when index' do
       before do
-        get '/api/v1/users/index'
+        get '/api/v1/users/index', headers: {
+          'X-User-Email': user.email,
+          'X-User-Token': user.authentication_token
+        }
       end
       it 'return http status ok' do
         expect(response).to have_http_status(:ok)
@@ -25,16 +28,12 @@ RSpec.describe "Api::V1::Users", type: :request do
         expect(response.content_type).to eq('application/json; charset=utf-8')
       end
       it 'return created instances' do
-        expect(JSON.parse(response.body)).to eq([{
-          'id' => 1,
-          'name' => "user",
-          'email' => "user@gmail",
-          'credit' => 0,
-          'phone' => "123456789",
-          'profile_picture_url' => nil,
-          'is_admin' => false
-        }
-        ])
+        expect(JSON.parse(response.body).first).to include(
+          'name',
+          'credit',
+          'profile_picture_url',
+          'is_admin'
+        )
       end
     end
   end

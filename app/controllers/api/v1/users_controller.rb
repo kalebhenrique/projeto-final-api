@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    acts_as_token_authentication_handler_for User, only: [:logout, :show, :update, :update_password, :delete]
+    acts_as_token_authentication_handler_for User, only: [:index, :logout, :show, :update, :update_password, :delete]
     
     before_action :authentication_admin, only: [:index]
     
@@ -51,7 +51,7 @@ class Api::V1::UsersController < ApplicationController
     def login 
         user = User.find_by!(email: params[:email])
         if user.valid_password?(params[:password])
-            render json: user, status: :ok
+            render json: user, serializer: SessionSerializer, status: :ok  
         else
             head(:unauthorized)
         end
