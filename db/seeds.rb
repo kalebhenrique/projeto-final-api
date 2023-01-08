@@ -185,5 +185,5 @@ Cart.create!(user_id: 2, product_id: 1)
 
 User.find_by(name: 'Admin').profile_picture.attach(io: File.open('./public/admin.png'), filename: 'admin.png')
 
-Product.find_by(name: 'Caneta Azul').images.attach(io: File.open('./public/product-1-1.jpg'), filename: 'product-1-1.jpg')
-Product.find_by(name: 'Caneta Azul').images.attach(io: File.open('./public/product-1-2.jpg'), filename: 'product-1-2.jpg')
+Product.find_by(name: 'Caneta azul').images.attach(io: File.open('./public/product-1-1.jpg'), filename: 'product-1-1.jpg')
+Product.find_by(name: 'Caneta azul').images.attach(io: File.open('./public/product-1-2.jpg'), filename: 'product-1-2.jpg')
