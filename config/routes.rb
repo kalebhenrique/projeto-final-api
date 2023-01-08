@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       end
       scope 'products' do
         get 'index', to: 'products#index'
+        get 'index_by_category/:id', to: 'products#index_by_category'
         get 'show/:id', to: 'products#show'
         post 'create', to: 'products#create'
         patch 'update/:id', to: 'products#update'
