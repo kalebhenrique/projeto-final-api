@@ -2,27 +2,33 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::Carts", type: :request do
   describe "GET /show" do
+    let(:user) {create(:user, email:"teste@teste")}
     let(:cart) {create(:cart)}
-    context 'id exist' do
-      before do
-        get "/api/v1/carts/show/#{cart.id}"
-      end
+    let(:cart_params) do
+      attributes_for(:cart)
+    end
+    context 'user id exist' do
       it 'return http status ok' do
+        get "/api/v1/carts/show/#{user.id}", params: {cart: cart_params}, headers: {
+          'X-User-Email': user.email,
+          'X-User-Token': user.authentication_token
+        }
         expect(response).to have_http_status(:ok)
       end
     end
-    context 'id not found' do
-      before do
-        get "/api/v1/carts/show/-1"
-      end
-      it 'return https not_found' do
+    context 'user id not found' do
+      it 'return https status not_found' do
+        get "/api/v1/carts/show/-1", params: {cart: cart_params}, headers: {
+          'X-User-Email': user.email,
+          'X-User-Token': user.authentication_token
+        }
         expect(response).to have_http_status(:not_found)
       end
     end
   end
 
   describe " POST /create" do
-    let(:user) {create(:user, is_admin: true)}
+    let(:user) {create(:user)}
     before do
       create(:category, id:1, name:"Bic")
 
@@ -43,7 +49,6 @@ RSpec.describe "Api::V1::Carts", type: :request do
         email: "user@gmail",
         password: "123456",
         credit: 1,
-        is_admin: true,
         phone: "987654321")
     end
     cart_params = {
@@ -83,7 +88,7 @@ RSpec.describe "Api::V1::Carts", type: :request do
   end
 
   describe " DELETE /delete/:id" do
-    let(:user) {create(:user, is_admin: true)}
+    let(:user) {create(:user)}
     let(:cart) {create(:cart)}
     context 'cart exist' do
       it 'return https status ok' do
