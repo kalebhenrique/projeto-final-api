@@ -1,10 +1,9 @@
 class Api::V1::CartsController < ApplicationController
-    acts_as_token_authentication_handler_for User, only:[:create, :delete]
-    
-    before_action :authentication_admin, except: [:show]
+    acts_as_token_authentication_handler_for User
+    before_action :require_login
 
     def show
-        cart = Cart.find(params[:id])
+        cart = Cart.where(user_id: params[:id])
         render json: cart, status: :ok
     rescue StandardError
         head(:not_found)
