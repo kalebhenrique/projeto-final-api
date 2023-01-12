@@ -1,5 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
-    acts_as_token_authentication_handler_for User, only:[:create,:update,:delete]
+    acts_as_token_authentication_handler_for User, only:[:create,:update,:delete,:add_images]
     
     before_action :authentication_admin, except: [:index, :index_by_category, :show]
     
@@ -44,6 +44,19 @@ class Api::V1::ProductsController < ApplicationController
         render json: product, status: :ok
     rescue StandardError
         head(:bad_request)
+    end
+
+    def add_images
+        product = Product.find(params[:id])
+
+        if product.images.attached?
+            product.images.purge
+        end
+
+        params[:images].each do |images|
+            product.images.attach(images)
+        end
+        render json: product
     end
     
     private
