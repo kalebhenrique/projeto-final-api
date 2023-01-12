@@ -1,6 +1,6 @@
 class Api::V1::CartsController < ApplicationController
     acts_as_token_authentication_handler_for User
-    before_action :require_login
+    before_action :verify_user, only: (:show)
 
     def show
         cart = Cart.where(user_id: params[:id])
@@ -26,6 +26,10 @@ class Api::V1::CartsController < ApplicationController
     end
     
     private
+
+    def verify_user
+        head(:unauthorized) unless current_user.id.to_s == (params[:id])
+    end
 
     def cart_params
         params.require(:cart).permit(
