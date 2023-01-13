@@ -16,13 +16,13 @@ RSpec.describe "Api::V1::Carts", type: :request do
         expect(response).to have_http_status(:ok)
       end
     end
-    context 'user id not found' do
-      it 'return https status not_found' do
+    context 'user id is not current user id' do
+      it 'return http status unauthorized' do
         get "/api/v1/carts/show/-1", params: {cart: cart_params}, headers: {
           'X-User-Email': user.email,
           'X-User-Token': user.authentication_token
         }
-        expect(response).to have_http_status(:not_found)
+        expect(response).to have_http_status(:unauthorized)
       end
     end
   end

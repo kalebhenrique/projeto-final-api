@@ -165,7 +165,7 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
     context "when user has no valid email" do
       it " return http status unauthorized" do
-        get '/api/v1/users/login', params: {
+        post '/api/v1/users/login', params: {
           email: 'teste@test',
           password: '123456'
         }
@@ -174,7 +174,7 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
     context "when user has no valid password" do
       it " return http status unauthorized" do
-        get '/api/v1/users/login', params: {
+        post '/api/v1/users/login', params: {
           email: 'teste@teste',
           password: '12345689'
         }
@@ -186,7 +186,7 @@ RSpec.describe "Api::V1::Users", type: :request do
   describe "user logout" do
     let(:user) {create(:user)}
     before do
-      get '/api/v1/users/login', params: {
+      post '/api/v1/users/login', params: {
         email: 'trainee@struct',
         password: '123456'
       }

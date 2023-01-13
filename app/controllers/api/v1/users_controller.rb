@@ -48,14 +48,14 @@ class Api::V1::UsersController < ApplicationController
         head(:bad_request)
     end
     
-    def login 
+    def login
         user = User.find_by!(email: params[:email])
         if user.valid_password?(params[:password])
             render json: user, serializer: SessionSerializer, status: :ok  
         else
             head(:unauthorized)
         end
-    rescue StandardError => e 
+    rescue StandardError => e
         render json: {message: e.message}, status: :unauthorized
     end
 

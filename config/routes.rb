@@ -10,7 +10,7 @@ Rails.application.routes.draw do
         patch 'update/:id', to: 'users#update'
         patch 'update_password/:id', to: 'users#update_password'
         delete 'delete/:id', to: 'users#delete'
-        get 'login', to: 'users#login'
+        post 'login', to: 'users#login'
         get 'logout', to: 'users#logout'
       end
       scope 'brands' do
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       scope 'products' do
         get 'index', to: 'products#index'
         get 'index_by_category/:id', to: 'products#index_by_category'
+        post '/add_images/:id', to: 'products#add_images'
         get 'show/:id', to: 'products#show'
         post 'create', to: 'products#create'
         patch 'update/:id', to: 'products#update'
